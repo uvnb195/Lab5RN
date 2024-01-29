@@ -12,6 +12,7 @@ import EntypoIcons from 'react-native-vector-icons/Entypo';
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {StackParams} from '../../App';
+import AntDesignIcons from 'react-native-vector-icons/AntDesign';
 
 export default function () {
   const navigation = useNavigation<NativeStackNavigationProp<StackParams>>();
@@ -56,6 +57,14 @@ export default function () {
                 <TouchableOpacity style={styles.bottomButton}>
                   <Text style={styles.bottomButtonText}>Đặt ngay</Text>
                 </TouchableOpacity>
+              </View>
+              <View style={styles.floating}>
+                <Text style={styles.floatingText}>
+                  <AntDesignIcons name="star" color={'#ffff00'} size={24} /> 5.0
+                </Text>
+                <View style={styles.floatingIcon}>
+                  <AntDesignIcons name="heart" size={28} color={'#ff005b'} />
+                </View>
               </View>
             </View>
           </View>
@@ -128,5 +137,25 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '600',
     color: 'blue',
+  },
+  floating: {
+    position: 'absolute',
+    end: 16,
+    top: -50,
+    alignItems: 'center',
+  },
+  floatingText: {
+    fontSize: 20,
+    fontWeight: '600',
+    color: 'white',
+    alignItems: 'center',
+    shadowColor: 'black',
+    shadowOffset: {width: -5, height: 5},
+  },
+  floatingIcon: {
+    backgroundColor: 'white',
+    borderRadius: 50,
+    padding: 16,
+    elevation: 10,
   },
 });
