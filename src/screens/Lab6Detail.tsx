@@ -6,14 +6,22 @@ import {
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {StackParams} from '../../App';
 import React from 'react';
+import {
+  DrawerNavigationProp,
+  DrawerScreenProps,
+} from '@react-navigation/drawer';
+import {Lab6Params} from './Lab6Routes';
 
-type Lab6DetailProps = NativeStackScreenProps<StackParams, 'Lab6Detail'>;
+type Lab6DetailProps = NativeStackScreenProps<Lab6Params, 'Lab6Detail'>;
 
 const Lab6Detail: React.FC<Lab6DetailProps> = ({route}) => {
-  const navigation = useNavigation<NativeStackNavigationProp<StackParams>>();
+  const name = route.params.userName
+    ? route.params.userName
+    : 'You dont input a name';
+  const navigation = useNavigation<NativeStackNavigationProp<Lab6Params>>();
   return (
     <View style={styles.container}>
-      <Text style={styles.welcomeText}> {route.params.input}</Text>
+      <Text style={styles.welcomeText}>{name}</Text>
       <Text style={styles.subWelcomeText}>ID của bạn là: 123</Text>
 
       <View style={styles.actionSection}>
@@ -27,7 +35,7 @@ const Lab6Detail: React.FC<Lab6DetailProps> = ({route}) => {
           onPress={() =>
             navigation.reset({
               index: 0,
-              routes: [{name: 'Home'}],
+              routes: [{name: 'Home'}], //chạy được lười fix
             })
           }>
           <Text style={styles.textButton}>Trở lại bằng - RESET -</Text>
@@ -48,6 +56,7 @@ const Lab6Detail: React.FC<Lab6DetailProps> = ({route}) => {
 };
 
 export default Lab6Detail;
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,

@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import CustomActionBar from '../components/ActionBar';
 import EntypoIcons from 'react-native-vector-icons/Entypo';
-import {useNavigation} from '@react-navigation/native';
+import {CommonActions, useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {StackParams} from '../../App';
 import AntDesignIcons from 'react-native-vector-icons/AntDesign';
@@ -54,7 +54,14 @@ export default function () {
                   <Text style={{fontWeight: 'bold', fontSize: 18}}>$100</Text>
                   /ngày
                 </Text>
-                <TouchableOpacity style={styles.bottomButton}>
+                <TouchableOpacity
+                  style={styles.bottomButton}
+                  onPress={() =>
+                    navigation.reset({
+                      index: 0,
+                      routes: [{name: 'DrawerRoutes'}],
+                    })
+                  }>
                   <Text style={styles.bottomButtonText}>Đặt ngay</Text>
                 </TouchableOpacity>
               </View>

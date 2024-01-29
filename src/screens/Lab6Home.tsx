@@ -9,9 +9,11 @@ import {
 } from 'react-native';
 import {StackParams} from '../../App';
 import {useState} from 'react';
+import {DrawerNavigationProp} from '@react-navigation/drawer';
+import {Lab6Params} from './Lab6Routes';
 
 export default function Lab6Home() {
-  const navigation = useNavigation<NativeStackNavigationProp<StackParams>>();
+  const navigation = useNavigation<NativeStackNavigationProp<Lab6Params>>();
   const [input, setInput] = useState('');
   return (
     <View style={styles.container}>
@@ -19,7 +21,7 @@ export default function Lab6Home() {
       <TextInput style={styles.input} value={input} onChangeText={setInput} />
       <TouchableOpacity
         style={styles.button}
-        onPress={() => navigation.navigate('Lab6Detail', {input: input})}>
+        onPress={() => navigation.navigate('Lab6Detail', {userName: input})}>
         <Text style={styles.textButton}>Đi tới màn hình chi tiết</Text>
       </TouchableOpacity>
     </View>
